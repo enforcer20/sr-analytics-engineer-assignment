@@ -42,7 +42,7 @@ entity_domains AS (
 SELECT
     entity_owners.entity_urn,
     entity_owners.entity_type,
-    user_details.username AS owner_username,
+    user_details.username AS owner_user_name,
     user_details.title AS owner_title,
     entity_domains.domain_name AS associated_domain
 FROM

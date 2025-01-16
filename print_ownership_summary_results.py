@@ -11,7 +11,7 @@ WITH ownership_details AS (
     SELECT
         entity_urn,
         entity_type,
-        owner_username,
+        owner_user_name,
         owner_title,
         associated_domain
     FROM
@@ -19,7 +19,7 @@ WITH ownership_details AS (
 )
 
 SELECT
-    owner_username,
+    owner_user_name,
     owner_title,
     associated_domain,
     entity_type,
@@ -27,13 +27,13 @@ SELECT
 FROM
     ownership_details
 GROUP BY
-    owner_username, 
+    owner_user_name, 
     owner_title, 
     associated_domain, 
     entity_type
 ORDER BY
     entity_count DESC, 
-    owner_username, 
+    owner_user_name, 
     associated_domain, 
     entity_type);
 """

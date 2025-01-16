@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: cleaned_entity_domains
+    description: >
+      Normalized domain information for datasets and dashboards. Extracts domain assignments.
+    columns:
+      - name: entity_urn
+        description: Unique identifier for datasets or dashboards.
+        tests:
+          - unique
+          - not_null
+      - name: domain_name
+        description: Name of domain assigned to the entity.
+        tests:
+          - not_null
+      - name: domain_description
+        description: Description of domain assigned to the entity.
+  - name: cleaned_entity_owners
+    description: >
+      Normalized ownership data for datasets and dashboards. Extracts owner relationships.
+    columns:
+      - name: entity_urn
+        description: Unique identifier for datasets or dashboards.
+        tests:
+          - unique
+          - not_null
+      - name: entity_type
+        description: Type of the entity (e.g., dataset, dashboard).
+      - name: owner_urn
+        tests:
+          - not_null
+        description: Unique identifier for the owner.
