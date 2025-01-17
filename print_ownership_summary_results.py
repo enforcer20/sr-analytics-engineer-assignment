@@ -13,12 +13,14 @@ WITH ownership_details AS (
         entity_type,
         owner_user_name,
         owner_title,
+        owner_name,
         associated_domain
     FROM
-       int_ownership_details
+        int_ownership_details
 )
 
 SELECT
+    owner_name,
     owner_user_name,
     owner_title,
     associated_domain,
@@ -27,12 +29,14 @@ SELECT
 FROM
     ownership_details
 GROUP BY
+    owner_name,
     owner_user_name, 
     owner_title, 
     associated_domain, 
     entity_type
 ORDER BY
     entity_count DESC, 
+    owner_name,
     owner_user_name, 
     associated_domain, 
     entity_type);

@@ -13,6 +13,7 @@ The table contains the following fields:
 
 | Field Name        | Description                                                                          | Example            |
 |-------------------|--------------------------------------------------------------------------------------|--------------------|
+| owner_name        | Full name of the individual responsible for managing datasets and dashboards.        | John Doe           |
 | owner_user_name   | The username of the individual responsible for managing datasets and dashboards.     | johndoe@email.com  |
 | owner_title       | The job title of the individual responsible for managing datasets and dashboards.    | Analytics Engineer |
 | associated_domain | The domain (e.g., Finance, Sales) associated with the owned datasets and dashboards. | E-Commerce         |
@@ -25,11 +26,12 @@ The table contains the following fields:
 
 ``` 
 SELECT 
+    owner_name,
     owner_user_name, 
     SUM(entity_count) AS total_datasets_owned
 FROM {{ ref('ownership_summary') }}
 WHERE entity_type = 'dataset'
-GROUP BY owner_user_name
+GROUP BY owner_name, owner_user_name
 ORDER BY total_datasets_owned DESC
 LIMIT 1;
 ``` 
@@ -50,7 +52,7 @@ ORDER BY total_dashboards DESC;
 
 ``` 
 SELECT 
-    distinct owner_user_name
+    distinct owner_name
 FROM {{ ref('ownership_summary') }};
 
 ``` 

@@ -17,6 +17,8 @@ models:
           - not_null        
       - name: owner_title
         description: Job title of the owner.
+      - name: owner_name
+        description: Full name of the owner
       - name: associated_domain
         description: Domain name associated with the entity.
         tests:
