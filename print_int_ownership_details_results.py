@@ -13,7 +13,8 @@ WITH user_details AS (
         user_entity.urn AS owner_urn,
         JSON_EXTRACT_STRING(user_entity.entity_details, '$.username') AS username,
         JSON_EXTRACT_STRING(user_entity.entity_details, '$.title') AS title,
-        JSON_EXTRACT_STRING(user_entity.entity_details, '$.fullName') AS fullname
+        JSON_EXTRACT_STRING(user_entity.entity_details, '$.fullName') AS fullname,
+        JSON_EXTRACT_STRING(user_entity.entity_details, '$.departmentName') AS departmentname
     FROM
         stg_datahub_entities AS user_entity
     WHERE
@@ -46,7 +47,8 @@ SELECT
     user_details.username AS owner_user_name,
     user_details.title AS owner_title,
     user_details.fullname AS owner_name,
-    entity_domains.domain_name AS associated_domain
+    entity_domains.domain_name AS associated_domain,
+    user_details.departmentname AS department_name
 FROM
     entity_owners
 LEFT JOIN
@@ -68,7 +70,7 @@ con.execute(analysis_query)
 print("Table 'int_ownership_details' created successfully.")
 
 # Verify the table by querying the first few rows
-results = con.execute("SELECT * FROM int_ownership_details LIMIT 5;").fetchall()
+results = con.execute("SELECT * FROM int_ownership_details;").fetchall()
 columns = [desc[0] for desc in con.description]
 
 # Display results in tabular format

@@ -16,6 +16,7 @@ The table contains the following fields:
 | owner_name        | Full name of the individual responsible for managing datasets and dashboards.        | John Doe           |
 | owner_user_name   | The username of the individual responsible for managing datasets and dashboards.     | johndoe@email.com  |
 | owner_title       | The job title of the individual responsible for managing datasets and dashboards.    | Analytics Engineer |
+| department_name   | The department name the owner belongs in                                             | Analytics          |
 | associated_domain | The domain (e.g., Finance, Sales) associated with the owned datasets and dashboards. | E-Commerce         |
 | entity_type       | The type of entity owned by the user (e.g., dataset, dashboard).                     | dataset            |
 | entity_count      | The total number of entities owned by the user in the associated domain.             | 100                |

@@ -23,3 +23,5 @@ models:
         description: Domain name associated with the entity.
         tests:
           - not_null
+      - name: department_name
+        description: Department name the owner of the dataset/dashboard belongs to.

@@ -9,6 +9,7 @@ WITH user_details AS (
         JSON_EXTRACT_STRING(user_entity.entity_details, '$.username') AS username,
         JSON_EXTRACT_STRING(user_entity.entity_details, '$.title') AS title,
         JSON_EXTRACT_STRING(user_entity.entity_details, '$.fullName') AS fullname,
+        JSON_EXTRACT_STRING(user_entity.entity_details, '$.departmentName') AS departmentname
     FROM
         {{ ref('stg_datahub_entities') }} AS user_entity
     WHERE
@@ -41,7 +42,8 @@ SELECT
     user_details.username AS owner_user_name,
     user_details.title AS owner_title,
     user_details.fullname AS owner_name,
-    entity_domains.domain_name AS associated_domain
+    entity_domains.domain_name AS associated_domain,
+    user_details.departmentname AS department_name
 FROM
     entity_owners
 LEFT JOIN
