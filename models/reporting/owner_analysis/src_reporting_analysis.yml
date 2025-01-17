@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: ownership_summary
+    description: >
+      Summary of entity type ownership counts by user name and domain. Aggregates data for reporting purposes.
+    columns:
+      - name: owner_name
+        description: Full name of the owner.
+      - name: owner_user_name
+        description: Username of the owner.
+        tests:
+          - not_null
+      - name: owner_title
+        description: Job title of the owner.
+      - name: department_name
+        description: Department name the owner of the dataset/dashboard belongs to.
+      - name: associated_domain
+        description: Domain name associated with the owned entities.
+      - name: entity_type
+        description: Type of the entity (e.g., dataset, dashboard).
+        tests:
+          - not_null
+      - name: entity_count
+        description: Count of entities owned by the user.
